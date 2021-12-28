@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">SkyEngApi</string>
+    <string name="search_word">Search Word</string>
+    <string name="search_button">search</string>
 </resources>
