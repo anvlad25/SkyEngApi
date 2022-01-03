@@ -6,34 +6,35 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.skyengapi.R
 import com.example.skyengapi.databinding.MainFragmentBinding
 import com.example.skyengapi.ui.main.adapter.MainAdapter
 import by.kirich1409.viewbindingdelegate.viewBinding
-import com.example.skyengapi.abs.AbsFragment
 import com.example.skyengapi.data.SkyEngWords
 import com.example.skyengapi.data.WordsRepo
 import com.example.skyengapi.ui.viewmodel.MainFragmentViewModel
-import dagger.android.HasAndroidInjector
+import kotlinx.coroutines.*
+import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
-import javax.inject.Inject
+import okhttp3.Dispatcher
+import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MainFragment : AbsFragment(R.layout.main_fragment), MainView {
-
-    @Inject
-    lateinit var wordsRepo: WordsRepo
+class MainFragment : MvpAppCompatFragment(), MainView {
+    private val wordsRepo: WordsRepo by inject()
+    private val viewModel: MainFragmentViewModel by viewModel()
 
     private var adapter: MainAdapter? = null
+
     private val binding: MainFragmentBinding by viewBinding()
+
     private val presenter: MainPresenter by moxyPresenter {
         MainPresenter(wordsRepo)
     }
-    private val viewModel: MainFragmentViewModel by lazy {
-        ViewModelProvider(this).get(MainFragmentViewModel::class.java)
-    }
+
+    private val scope = CoroutineScope(Dispatchers.IO)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -57,11 +58,19 @@ class MainFragment : AbsFragment(R.layout.main_fragment), MainView {
                 SearchDialogFragment.OnSearchClickListener {
                 override fun onClick(searchWord: String) {
                     //presenter.searchingWords(searchWord)
-                    viewModel.getData(searchWord)
+                    getDataCoroutines(searchWord)
                 }
             })
             searchDialogFragment.show(childFragmentManager, "repo")
         }
+    }
+
+    private fun getDataCoroutines(searchWord: String) {
+        scope.launch {
+            delay(5000)
+            viewModel.getData(searchWord)
+        }
+
     }
 
     private fun initAdapter() {
@@ -87,6 +96,11 @@ class MainFragment : AbsFragment(R.layout.main_fragment), MainView {
 
     override fun showError(error: Throwable) {
         Toast.makeText(requireContext(), error.message, Toast.LENGTH_LONG).show()
+    }
+
+    override fun onDestroy() {
+        scope.cancel()
+        super.onDestroy()
     }
 
     companion object {

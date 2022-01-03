@@ -1,4 +1,4 @@
-package com.example.skyengapi.di
+package com.example.skyengapi.di.dagger
 
 import com.example.skyengapi.data.WordsRepo
 import com.example.skyengapi.data.WordsRepoImpl
