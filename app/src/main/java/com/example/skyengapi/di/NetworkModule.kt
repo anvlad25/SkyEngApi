@@ -1,20 +1,30 @@
-package com.example.skyengapi.api
+package com.example.skyengapi.di
 
+import com.example.skyengapi.api.SkyEngApi
+import com.example.skyengapi.api.SkyEngApiInterceptor
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import dagger.Module
+import dagger.Provides
+import dagger.Reusable
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
-object SkyEngApiFactory {
-    private val gson: Gson =
+@Module
+class NetworkModule {
+
+    @Provides
+    fun provideGson(): Gson =
         GsonBuilder()
             .setPrettyPrinting()
             .create()
 
-    fun create(): SkyEngApi =
+    @Reusable
+    @Provides
+    fun provideGetSkyEngApi(gson: Gson): SkyEngApi =
         Retrofit.Builder()
             .baseUrl("https://dictionary.skyeng.ru")
             .client(

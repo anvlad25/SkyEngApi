@@ -9,11 +9,6 @@ import moxy.MvpPresenter
 class MainPresenter(private val wordsRepo: WordsRepo) : MvpPresenter<MainView>() {
     private val disposables = CompositeDisposable()
 
-    override fun onFirstViewAttach() {
-        super.onFirstViewAttach()
-        viewState.init()
-    }
-
     fun searchingWords(searchWord: String) {
         disposables.add(
             wordsRepo

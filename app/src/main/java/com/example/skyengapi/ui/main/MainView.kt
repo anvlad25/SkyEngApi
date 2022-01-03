@@ -6,7 +6,6 @@ import moxy.viewstate.strategy.alias.SingleState
 
 @SingleState
 interface MainView : MvpView {
-    fun init()
     fun updateList()
     fun showWords(words: List<SkyEngWords>)
     fun showError(error: Throwable)
