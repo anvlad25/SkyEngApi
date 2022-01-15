@@ -12,7 +12,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="15dp"
-        android:text="@string/search_button" />
+        android:text="@string/search_button_rx" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/search_text"
