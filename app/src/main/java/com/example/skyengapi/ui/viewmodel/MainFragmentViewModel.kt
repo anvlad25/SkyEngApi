@@ -4,23 +4,30 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.skyengapi.data.SkyEngWords
 import com.example.skyengapi.data.WordsRepo
+import com.example.skyengapi.room.HistoryWords
+import com.example.skyengapi.room.WordsDao
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
+import kotlinx.coroutines.delay
 
 
-class MainFragmentViewModel(val wordsRepo: WordsRepo) : ViewModel() {
-    val liveData = MutableLiveData<List<SkyEngWords>>()
+class MainFragmentViewModel(val wordsRepo: WordsRepo, val wordsDao: WordsDao) : ViewModel() {
+    private val _liveData = MutableLiveData<List<SkyEngWords>>()
+    val liveData: MutableLiveData<List<SkyEngWords>> get() = _liveData
 
     fun getData(searchWord: String) {
         wordsRepo
             .getWords(searchWord)
-            .observeOn(AndroidSchedulers.mainThread())
+            .observeOn(Schedulers.io())
             .subscribeOn(Schedulers.io())
             .subscribe(
-                {
-                    liveData.postValue(it)
+                { skyEngWords ->
+                    _liveData.postValue(skyEngWords)
+                    wordsDao.insertWord(skyEngWordsToHistory(skyEngWords))
                 }, { }
             )
-
     }
+
+    private fun skyEngWordsToHistory(skyEngWords: List<SkyEngWords>): HistoryWords =
+        HistoryWords(skyEngWords[0].text, skyEngWords[0].meanings[0].translation.text, skyEngWords[0].meanings[0].imageUrl)
 }

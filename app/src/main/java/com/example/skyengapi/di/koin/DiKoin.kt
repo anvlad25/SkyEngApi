@@ -1,12 +1,20 @@
 package com.example.skyengapi.di.koin
 
+import androidx.room.Room
 import com.example.skyengapi.api.SkyEngApi
 import com.example.skyengapi.api.SkyEngApiInterceptor
 import com.example.skyengapi.data.WordsRepo
 import com.example.skyengapi.data.WordsRepoImpl
+import com.example.skyengapi.room.WordsDao
+import com.example.skyengapi.room.WordsDao_Impl
+import com.example.skyengapi.room.WordsDataBase
+import com.example.skyengapi.ui.viewmodel.HistoryFragmentViewModel
 import com.example.skyengapi.ui.viewmodel.MainFragmentViewModel
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -41,7 +49,11 @@ object DiKoin {
             .create(SkyEngApi::class.java)
 
     val skyEngApiModule = module {
-        single<WordsRepo>{ WordsRepoImpl(getSkyEngApi(gson())) }
-        viewModel { MainFragmentViewModel(wordsRepo = get()) }
+        single<WordsRepo> { WordsRepoImpl(getSkyEngApi(gson())) }
+        single { Room.databaseBuilder(get(), WordsDataBase::class.java, "HistoryDB").build() }
+        single { get<WordsDataBase>().wordsDao() }
+        viewModel { MainFragmentViewModel(wordsRepo = get(), wordsDao = get()) }
+        viewModel { HistoryFragmentViewModel(wordsDao = get(), scope = CoroutineScope(Dispatchers.IO + SupervisorJob())) }
+
     }
 }

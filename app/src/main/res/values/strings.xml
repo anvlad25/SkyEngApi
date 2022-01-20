@@ -2,4 +2,6 @@
     <string name="app_name">SkyEngApi</string>
     <string name="search_word">Search Word</string>
     <string name="search_button_rx">search</string>
+    <string name="history_words">История поиска</string>
+    <string name="home">Домой</string>
 </resources>
