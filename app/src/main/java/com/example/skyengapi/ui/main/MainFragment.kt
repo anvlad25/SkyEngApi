@@ -18,7 +18,6 @@ import com.example.skyengapi.ui.viewmodel.MainFragmentViewModel
 import kotlinx.coroutines.*
 import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
-import okhttp3.Dispatcher
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
