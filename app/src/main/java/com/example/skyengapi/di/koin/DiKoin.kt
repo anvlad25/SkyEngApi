@@ -1,13 +1,11 @@
 package com.example.skyengapi.di.koin
 
 import androidx.room.Room
-import com.example.skyengapi.api.SkyEngApi
-import com.example.skyengapi.api.SkyEngApiInterceptor
-import com.example.skyengapi.data.WordsRepo
-import com.example.skyengapi.data.WordsRepoImpl
-import com.example.skyengapi.room.WordsDao
-import com.example.skyengapi.room.WordsDao_Impl
-import com.example.skyengapi.room.WordsDataBase
+import com.example.repository.network.api.SkyEngApi
+import com.example.repository.network.api.SkyEngApiInterceptor
+import com.example.repository.network.data.WordsRepo
+import com.example.repository.network.data.WordsRepoImpl
+import com.example.repository.room.WordsDataBase
 import com.example.skyengapi.ui.viewmodel.HistoryFragmentViewModel
 import com.example.skyengapi.ui.viewmodel.MainFragmentViewModel
 import com.google.gson.Gson
