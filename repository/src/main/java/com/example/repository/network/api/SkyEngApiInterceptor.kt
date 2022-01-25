@@ -1,4 +1,4 @@
-package com.example.skyengapi.api
+package com.example.repository.network.api
 
 import okhttp3.Interceptor
 import okhttp3.Response

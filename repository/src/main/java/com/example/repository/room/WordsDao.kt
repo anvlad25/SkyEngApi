@@ -1,4 +1,4 @@
-package com.example.skyengapi.room
+package com.example.repository.room
 
 import androidx.room.Dao
 import androidx.room.Insert

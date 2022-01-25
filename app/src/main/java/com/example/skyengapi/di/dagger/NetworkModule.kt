@@ -1,7 +1,7 @@
 package com.example.skyengapi.di.dagger
 
-import com.example.skyengapi.api.SkyEngApi
-import com.example.skyengapi.api.SkyEngApiInterceptor
+import com.example.repository.network.api.SkyEngApi
+import com.example.repository.network.api.SkyEngApiInterceptor
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module

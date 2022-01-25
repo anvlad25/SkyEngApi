@@ -2,8 +2,8 @@ package com.example.skyengapi.ui.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.skyengapi.room.HistoryWords
-import com.example.skyengapi.room.WordsDao
+import com.example.repository.room.HistoryWords
+import com.example.repository.room.WordsDao
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 

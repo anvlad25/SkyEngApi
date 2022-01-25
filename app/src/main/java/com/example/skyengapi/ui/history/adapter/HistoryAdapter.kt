@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.skyengapi.databinding.HistoryWordsFragmentItemBinding
-import com.example.skyengapi.room.HistoryWords
+import com.example.repository.room.HistoryWords
 import com.example.skyengapi.setPic
 
 class HistoryAdapter: RecyclerView.Adapter<HistoryAdapter.ViewHolder>() {

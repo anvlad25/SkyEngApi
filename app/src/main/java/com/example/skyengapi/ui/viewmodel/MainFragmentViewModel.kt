@@ -2,13 +2,11 @@ package com.example.skyengapi.ui.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.skyengapi.data.SkyEngWords
-import com.example.skyengapi.data.WordsRepo
-import com.example.skyengapi.room.HistoryWords
-import com.example.skyengapi.room.WordsDao
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import com.example.repository.network.data.SkyEngWords
+import com.example.repository.network.data.WordsRepo
+import com.example.repository.room.HistoryWords
+import com.example.repository.room.WordsDao
 import io.reactivex.rxjava3.schedulers.Schedulers
-import kotlinx.coroutines.delay
 
 
 class MainFragmentViewModel(val wordsRepo: WordsRepo, val wordsDao: WordsDao) : ViewModel() {

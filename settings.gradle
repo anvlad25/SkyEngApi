@@ -8,3 +8,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "SkyEngApi"
 include ':app'
+include ':repository'

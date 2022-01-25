@@ -12,8 +12,8 @@ import com.example.skyengapi.R
 import com.example.skyengapi.databinding.MainFragmentBinding
 import com.example.skyengapi.ui.main.adapter.MainAdapter
 import by.kirich1409.viewbindingdelegate.viewBinding
-import com.example.skyengapi.data.SkyEngWords
-import com.example.skyengapi.data.WordsRepo
+import com.example.repository.network.data.SkyEngWords
+import com.example.repository.network.data.WordsRepo
 import com.example.skyengapi.ui.viewmodel.MainFragmentViewModel
 import kotlinx.coroutines.*
 import moxy.MvpAppCompatFragment

@@ -3,7 +3,7 @@ package com.example.skyengapi.ui.main.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.skyengapi.data.SkyEngWords
+import com.example.repository.network.data.SkyEngWords
 import com.example.skyengapi.databinding.MainFragmentItemBinding
 
 class MainAdapter : RecyclerView.Adapter<MainAdapter.ViewHolder>() {

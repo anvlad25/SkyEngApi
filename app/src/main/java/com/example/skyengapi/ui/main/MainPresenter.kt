@@ -1,6 +1,6 @@
 package com.example.skyengapi.ui.main
 
-import com.example.skyengapi.data.WordsRepo
+import com.example.repository.network.data.WordsRepo
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
