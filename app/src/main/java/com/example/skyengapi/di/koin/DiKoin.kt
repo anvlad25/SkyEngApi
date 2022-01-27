@@ -6,6 +6,7 @@ import com.example.repository.network.api.SkyEngApiInterceptor
 import com.example.repository.network.data.WordsRepo
 import com.example.repository.network.data.WordsRepoImpl
 import com.example.repository.room.WordsDataBase
+import com.example.skyengapi.ui.history.HistoryFragment
 import com.example.skyengapi.ui.viewmodel.HistoryFragmentViewModel
 import com.example.skyengapi.ui.viewmodel.MainFragmentViewModel
 import com.google.gson.Gson
@@ -51,7 +52,10 @@ object DiKoin {
         single { Room.databaseBuilder(get(), WordsDataBase::class.java, "HistoryDB").build() }
         single { get<WordsDataBase>().wordsDao() }
         viewModel { MainFragmentViewModel(wordsRepo = get(), wordsDao = get()) }
-        viewModel { HistoryFragmentViewModel(wordsDao = get(), scope = CoroutineScope(Dispatchers.IO + SupervisorJob())) }
+
+        scope<HistoryFragment> {
+            viewModel { HistoryFragmentViewModel(wordsDao = get(), scope = CoroutineScope(Dispatchers.IO + SupervisorJob())) }
+        }
 
     }
 }

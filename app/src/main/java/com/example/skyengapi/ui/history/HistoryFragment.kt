@@ -12,10 +12,15 @@ import com.example.skyengapi.R
 import com.example.skyengapi.databinding.HistoryWordsFragmentBinding
 import com.example.skyengapi.ui.history.adapter.HistoryAdapter
 import com.example.skyengapi.ui.viewmodel.HistoryFragmentViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.component.KoinScopeComponent
+import org.koin.core.component.getOrCreateScope
+import org.koin.core.component.inject
+import org.koin.core.scope.Scope
 
-class HistoryFragment : Fragment() {
-    private val viewModel: HistoryFragmentViewModel by viewModel()
+
+class HistoryFragment : Fragment(), KoinScopeComponent {
+    override val scope: Scope by getOrCreateScope()
+    private val viewModel: HistoryFragmentViewModel by inject()
     private val binding: HistoryWordsFragmentBinding by viewBinding()
     private var adapter: HistoryAdapter? = null
 
