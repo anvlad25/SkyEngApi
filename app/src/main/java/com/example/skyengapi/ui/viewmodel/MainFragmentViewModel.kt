@@ -6,6 +6,7 @@ import com.example.repository.network.data.SkyEngWords
 import com.example.repository.network.data.WordsRepo
 import com.example.repository.room.HistoryWords
 import com.example.repository.room.WordsDao
+import com.example.skyengapi.Delegate
 import io.reactivex.rxjava3.schedulers.Schedulers
 
 
@@ -26,6 +27,14 @@ class MainFragmentViewModel(val wordsRepo: WordsRepo, val wordsDao: WordsDao) : 
             )
     }
 
-    private fun skyEngWordsToHistory(skyEngWords: List<SkyEngWords>): HistoryWords =
-        HistoryWords(skyEngWords[0].text, skyEngWords[0].meanings[0].translation.text, skyEngWords[0].meanings[0].imageUrl)
+    private fun skyEngWordsToHistory(skyEngWords: List<SkyEngWords>): HistoryWords {
+        var historyWords by Delegate()
+        historyWords = HistoryWords(
+            skyEngWords[0].text,
+            skyEngWords[0].meanings[0].translation.text,
+            skyEngWords[0].meanings[0].imageUrl
+        )
+        return historyWords
+    }
+
 }
