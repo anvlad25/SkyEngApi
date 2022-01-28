@@ -1,3 +1,5 @@
+import Versions.splashScreen
+
 object Versions {
     //RxJava
     const val rxAndroid = "3.0.0"
@@ -37,6 +39,9 @@ object Versions {
 
     //ViewBinding
     const val viewbindingpropertydelegate = "1.5.6"
+
+    //SplashScreen
+    const val splashScreen = "1.0.0-beta01"
 
     const val coreKtx = "1.7.0"
     const val appcompat = "1.4.1"
@@ -103,6 +108,10 @@ object Glide {
 object ViewBindingProp {
     const val viewbindingpropertydelegate =
         "com.github.kirich1409:viewbindingpropertydelegate:${Versions.viewbindingpropertydelegate}"
+}
+
+object SplashScreen {
+    const val splashScreen = "androidx.core:core-splashscreen:${Versions.splashScreen}"
 }
 
 object AndroidDep {

@@ -99,4 +99,7 @@ dependencies {
     //Glide
     implementation(Glide.glide)
     kapt(Glide.glideCompiler)
+
+    //SplashScreen
+    implementation(SplashScreen.splashScreen)
 }
