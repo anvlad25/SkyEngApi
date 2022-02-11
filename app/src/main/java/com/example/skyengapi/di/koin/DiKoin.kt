@@ -6,6 +6,7 @@ import com.example.repository.network.api.SkyEngApiInterceptor
 import com.example.repository.network.data.WordsRepo
 import com.example.repository.network.data.WordsRepoImpl
 import com.example.repository.room.WordsDataBase
+import com.example.skyengapi.ui.MyWidget
 import com.example.skyengapi.ui.history.HistoryFragment
 import com.example.skyengapi.ui.viewmodel.HistoryFragmentViewModel
 import com.example.skyengapi.ui.viewmodel.MainFragmentViewModel
