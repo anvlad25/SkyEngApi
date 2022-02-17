@@ -1,5 +1,3 @@
-import Versions.splashScreen
-
 object Versions {
     //RxJava
     const val rxAndroid = "3.0.0"
@@ -42,6 +40,11 @@ object Versions {
 
     //SplashScreen
     const val splashScreen = "1.0.0-beta01"
+
+    //Mockito
+    const val mockitoCore = "2.19.0"
+    const val mockitoInline = "2.8.9"
+    const val mockitoKotlin = "1.5.0"
 
     const val coreKtx = "1.7.0"
     const val appcompat = "1.4.1"
@@ -112,6 +115,12 @@ object ViewBindingProp {
 
 object SplashScreen {
     const val splashScreen = "androidx.core:core-splashscreen:${Versions.splashScreen}"
+}
+
+object Mockito {
+    const val mockitoCore = "org.mockito:mockito-core:${Versions.mockitoCore}"
+    const val mockitoInline = "org.mockito:mockito-inline:${Versions.mockitoInline}"
+    const val mockitoKotlin = "com.nhaarman:mockito-kotlin:${Versions.mockitoKotlin}"
 }
 
 object AndroidDep {

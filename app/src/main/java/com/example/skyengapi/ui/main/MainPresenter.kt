@@ -1,20 +1,23 @@
 package com.example.skyengapi.ui.main
 
 import com.example.repository.network.data.WordsRepo
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import com.example.skyengapi.scheduler.ISchedulerProvider
+import com.example.skyengapi.scheduler.SchedulerProvider
 import io.reactivex.rxjava3.disposables.CompositeDisposable
-import io.reactivex.rxjava3.schedulers.Schedulers
 import moxy.MvpPresenter
 
-class MainPresenter(private val wordsRepo: WordsRepo) : MvpPresenter<MainView>() {
+class MainPresenter(
+    private val wordsRepo: WordsRepo,
+    private val schedulerProvider: ISchedulerProvider = SchedulerProvider()
+) : MvpPresenter<MainView>() {
     private val disposables = CompositeDisposable()
 
     fun searchingWords(searchWord: String) {
         disposables.add(
             wordsRepo
                 .getWords(searchWord)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
+                .observeOn(schedulerProvider.ui())
+                .subscribeOn(schedulerProvider.io())
                 .subscribe(
                     { words ->
                         viewState.showWords(words)
