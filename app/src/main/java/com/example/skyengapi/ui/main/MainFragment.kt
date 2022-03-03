@@ -56,8 +56,8 @@ class MainFragment : MvpAppCompatFragment(), MainView {
             searchDialogFragment.setOnSearchClickListener(object :
                 SearchDialogFragment.OnSearchClickListener {
                 override fun onClick(searchWord: String) {
-                    //presenter.searchingWords(searchWord)
-                    getDataCoroutines(searchWord)
+                    presenter.searchingWords(searchWord)
+                    //getDataCoroutines(searchWord)
                 }
             })
             searchDialogFragment.show(childFragmentManager, "repo")

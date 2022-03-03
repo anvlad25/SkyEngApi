@@ -102,4 +102,12 @@ dependencies {
 
     //SplashScreen
     implementation(SplashScreen.splashScreen)
+
+    //Mockito
+    implementation(Mockito.mockitoCore)
+    implementation(Mockito.mockitoInline)
+    implementation(Mockito.mockitoKotlin) {
+        exclude("org.jetbrains.kotlin")
+        exclude("org.mockito")
+    }
 }
